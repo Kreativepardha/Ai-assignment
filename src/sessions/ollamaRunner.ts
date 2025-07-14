@@ -1,8 +1,11 @@
 import fetch from 'node-fetch'; // If using Node 18+, use global fetch
 import { createPrompt } from '../prompts/templates';
+import { systemPrompt } from '../prompts/basePrompt';
+
 
 export async function runOllamaSession(customerName: string, concern?: string) {
-  const prompt = createPrompt(customerName, concern);
+  const userPrompt = createPrompt(customerName, concern);
+ const prompt = `${systemPrompt}\n\n${userPrompt}`;
 
   const response = await fetch('http://localhost:11434/api/generate', {
     method: 'POST',
