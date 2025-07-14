@@ -1,6 +1,7 @@
 import readline from 'readline';
 import { runGeminiSession } from './sessions/geminiRunner';
 import { logConversation } from './sessions/logManager';
+import { runOllamaSession } from './sessions/ollamaRunner';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -11,7 +12,7 @@ console.log('🧠 Gemini CLI - Sales AI Assistant\n');
 
 rl.question('Enter customer name: ', (name) => {
   rl.question('Enter concern (or leave blank): ', async (concern) => {
-    const { prompt, response } = await runGeminiSession(name, concern || undefined);
+    const { prompt, response } = await runOllamaSession(name, concern || undefined);
 
     console.log('\n🤖 Gemini Response:\n');
     console.log(response);
