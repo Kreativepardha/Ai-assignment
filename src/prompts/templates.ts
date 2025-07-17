@@ -1,7 +1,9 @@
 export function createPrompt(customerName: string, concern?: string): string {
- return `You are on a call with ${customerName}, a small business owner.
-${concern ? `They are concerned about ${concern}.` : ''}
+  return `
+Hi ${customerName}, I wanted to introduce our productivity platform that improves teamwork and automates tasks.
 
-Generate a friendly, persuasive, clear outbound call script introducing a SaaS productivity tool that improves teamwork and automates tasks, highlights ROI, and closes with a clear CTA for scheduling a demo.`;
+${concern ? `I understand you're concerned about ${concern}.` : ''}
 
+We’ve helped many small businesses boost their ROI. Would you be open to a 15-minute demo?
+  `;
 }

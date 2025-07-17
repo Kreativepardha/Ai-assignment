@@ -1,20 +1,20 @@
-// import { GoogleGenerativeAI } from '@google/generative-ai';
-// import { config } from 'dotenv';
-// import { systemPrompt } from '../prompts/basePrompt';
-// import { createPrompt } from '../prompts/templates';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { config } from 'dotenv';
+import { systemPrompt } from '../prompts/basePrompt';
+import { createPrompt } from '../prompts/templates';
 
-// config(); // Load .env
+config(); // Load .env
 
-// const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
-// export async function runGeminiSession(customerName: string, concern?: string) {
-//   const prompt = createPrompt(customerName, concern);
+export async function runGeminiSession(customerName: string, concern?: string) {
+  const prompt = createPrompt(customerName, concern);
 
-//   const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
  
-//   const result =  await model.generateContent(prompt)
+  const result =  await model.generateContent(prompt)
 
-//   const response = await result.response.text();
-//   return { prompt, response };
-// }
+  const response = await result.response.text();
+  return { prompt, response };
+}
